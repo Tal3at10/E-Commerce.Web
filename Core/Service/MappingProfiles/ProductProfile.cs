@@ -1,26 +1,28 @@
-﻿using AutoMapper;
-using DomainLayer.Models;
-using Shared.DataTransferObject;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
+using Domain.Models;
+using Shared;
 
-namespace Service.MappingProfiles
+namespace Services.MappingProfiles
 {
-    public class ProductProfile : Profile
+    public class ProductProfile : Profile 
     {
         public ProductProfile()
         {
-            CreateMap<Product, ProductDto>()
-                .ForMember(dist => dist.BrandName, Options => Options.MapFrom(src => src.ProductBrand.Name))
-                .ForMember(dist => dist.TypeName, Options => Options.MapFrom(src => src.ProductType.Name))
-                .ForMember(dist => dist.PictureUrl, Options => Options.MapFrom<PictureUrlResolver>());
+            CreateMap<Product, ProductResultDto>()
+                .ForMember(d => d.BrandName, o => o.MapFrom(s => s.ProductBrand.Name))
+                .ForMember(d => d.TypeName, o => o.MapFrom(s => s.ProductType.Name))
+                //.ForMember(d => d.PictureUrl ,o => o.MapFrom(s => $"https://localhost:7155/{s.PictureUrl}"))
+                .ForMember(d => d.PictureUrl ,o => o.MapFrom<PictureUrlResolver>())
+                .ReverseMap();
 
-            CreateMap<ProductType, TypeDto>();
-            CreateMap<ProductBrand, BrandDto>();
+            CreateMap<ProductBrand, BrandResultDto>().ReverseMap();
+
+            CreateMap<ProductType, TypeResultDto>().ReverseMap();
         }
     }
 }
- 

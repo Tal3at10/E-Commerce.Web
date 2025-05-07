@@ -1,10 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-
-namespace ServiceAbstraction
+namespace Services.Abstraction
 {
     public interface IServiceManager
     {
-        public IProductService ProductService { get;}
+        IProductService ProductService { get;}
+        IBasketService BasketService { get;}
+        ICahceService CahceService { get;}
+        IAuthService AuthService { get;}
     }
 }

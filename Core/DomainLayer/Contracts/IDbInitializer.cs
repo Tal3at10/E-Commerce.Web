@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services
+namespace Domain.Contracts
 {
-    public static class AssemblyReference
+    public interface IDbInitializer
     {
+        Task InitializeAsync();
+        Task InitializeIdentityAsync();
     }
 }
