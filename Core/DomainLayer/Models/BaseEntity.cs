@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DomainLayer.Models
+namespace Domain.Models
 {
-    public class BaseEntity<TKey>
+    public class BaseEntity<Tkey>
     {
-        public TKey Id { get; set; }
+        public Tkey Id { get; set; }
     }
 }

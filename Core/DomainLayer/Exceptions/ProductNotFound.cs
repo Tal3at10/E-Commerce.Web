@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services
+namespace Domain.Exceptions
 {
-    public static class AssemblyReference
+    public class ProductNotFound(int id) : NotFoundException($"Product With id:{id} Not Found !!")
     {
+
     }
 }

@@ -1,12 +1,25 @@
-﻿using AutoMapper;
-using DomainLayer.Contracts;
-using ServiceAbstraction;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using AutoMapper;
+using Domain.Contracts;
+using Domain.Models.Identity;
+using Microsoft.AspNetCore.Identity;
+using Services.Abstraction;
 
-namespace Service
+namespace Services
 {
-    public class ServiceManager(IUnitOfWork unitOfWork, IMapper mapper) : IServiceManager
+    public class ServiceManager(IUnitOfWork unitOfWork, IMapper mapper, IBasketRepository basketRepository, ICacheRepository cacheRepository,UserManager<AppUser> userManager) : IServiceManager
     {
-        private readonly Lazy<IProductService> _LazyProductService = new Lazy<IProductService>(() => new ProductService(unitOfWork, mapper));
-        public IProductService ProductService => _LazyProductService.Value;
+        
+        public IProductService ProductService { get; } = new ProductService(unitOfWork, mapper);
+
+        public IBasketService BasketService { get; } = new BasketService(basketRepository, mapper);
+
+        public ICahceService CahceService { get; } = new CacheService(cacheRepository);
+
+        public IAuthService AuthService { get; } = new AuthService(userManager);
     }
 }

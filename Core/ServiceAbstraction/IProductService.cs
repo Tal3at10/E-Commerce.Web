@@ -1,13 +1,30 @@
-﻿using Shared.DataTransferObject;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Dynamic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Domain.Models;
+using Shared;
 
-namespace ServiceAbstraction
+namespace Services.Abstraction
 {
     public interface IProductService
     {
-        Task<IEnumerable<ProductDto>> GetAllProductsAsync();
-        Task<ProductDto> GetProductByIdAsync(int Id);
-        Task<IEnumerable<TypeDto>> GetAllTypesAsync();
-        Task<IEnumerable<BrandDto>> GetAllBrandsAsync();
+        // Get All Product
+
+        public Task<PaginationResponse<ProductResultDto>> GetAllProductsAsync(ProductSpecificationParameters productSpec);
+
+        // Get Product By Id
+
+        public Task<ProductResultDto?> GetProductByIdAsync(int id);
+
+        // Get All Brands
+
+        public Task<IEnumerable<BrandResultDto>> GetAllBrandsAsync();
+
+        // Get All Types
+
+        public Task<IEnumerable<TypeResultDto>> GetAllTypesAsync();
     }
 }

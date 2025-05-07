@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Models
 {
-    public class ProductType : BaseEntity<int>
+    public class CustomerBasket
     {
-        public string Name { get; set; }
+        public string Id { get; set; }
+        public IEnumerable<BasketItem> Items { get; set; }
     }
 }

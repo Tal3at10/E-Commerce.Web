@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DomainLayer.Models
+namespace Domain.Models
 {
     public class ProductBrand : BaseEntity<int>
     {
-        public string Name { get; set; } = default!;
-
-    }   
+        public string Name { get; set; }
+    }
 }

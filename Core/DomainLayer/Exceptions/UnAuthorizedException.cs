@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services
+namespace Domain.Exceptions
 {
-    public static class AssemblyReference
+    public class UnAuthorizedException(string message = "Invalid Email Or Password") : Exception(message)
     {
     }
 }
